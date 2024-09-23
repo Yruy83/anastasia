@@ -1,0 +1,1155 @@
+@import "_fonts.scss";
+
+@import "_reset.scss";
+
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	color: #343434;
+	background-color: #fff;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow: clip;
+}
+
+.wrapper .page {
+	flex-grow: 1;
+}
+
+[class*="__container"] {
+	max-width: 1270px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+[class*="--margin"] {
+	margin-bottom: 64px;
+}
+
+[class*="--margin-about-us"] {
+	margin-bottom: 67px;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+/* Секція Header*/
+/* Секція Header*/
+/* Секція Header*/
+
+.header {
+	padding: 16px 0 9px;
+
+	&__inner {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		column-gap: 78px;
+		padding: 0 75px 0 74px;
+
+		@media (max-width: 865px) {
+			padding: 0;
+		}
+
+		@media (max-width: 530px) {
+			column-gap: 30px;
+		}
+
+		@media (max-width: 440px) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: auto;
+			row-gap: 15px;
+		}
+	}
+
+	&__nav {
+		flex-basis: 380px;
+
+		@media (max-width: 768px) {
+			display: none;
+		}
+	}
+
+	&__list {
+		display: flex;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+		flex-grow: 0;
+		column-gap: 64px;
+		row-gap: 15px;
+
+		@media (max-width: 991.98px) {
+			column-gap: 30px;
+		}
+	}
+
+	&__item {
+		position: relative;
+
+		@media (any-hover: hover) {
+			&:nth-child(3):hover .phones {
+				display: block;
+				pointer-events: all;
+			}
+		}
+	}
+
+	&__link {
+		font-size: 16px;
+		color: #343434;
+
+		&:focus-visible {
+			outline-offset: 2px;
+			outline: 1px solid #343434;
+			border-radius: 5px;
+		}
+
+		&:active {
+			color: #5D5D5D;
+		}
+
+		&--active::after {
+			position: absolute;
+			content: '';
+			width: 100%;
+			height: 1px;
+			left: 0;
+			bottom: -4px;
+			background-color: #343434;
+		}
+	}
+
+	&:target .phones {
+		display: block;
+	}
+
+	&--margin-shop {
+		margin-bottom: 32px;
+	}
+}
+
+
+
+/* Бургер меню*/
+/* Бургер меню*/
+/* Бургер меню*/
+
+.burger-menu {
+	position: relative;
+	display: none;
+	width: 44px;
+	height: 25px;
+	flex-shrink: 0;
+
+	span,
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+		width: 80%;
+		height: 2px;
+		left: 0;
+		border-radius: 2px;
+		background-color: #343434;
+		transition: all 0.3s;
+	}
+
+	span {
+		top: 50%;
+		transform: translate(0, -50%);
+	}
+
+	&::before {
+		bottom: 0;
+	}
+
+	&::after {
+		top: 0;
+	}
+
+	@media (max-width: 768px) {
+		& {
+			display: block;
+		}
+	}
+}
+
+.menu-open .header__nav {
+	display: block;
+}
+
+/* Menu-burger при кліці на ньому*/
+
+.menu-open .burger-menu span {
+	transform: scale(0);
+}
+
+.menu-open .burger-menu::before {
+	top: 50%;
+	transform: rotate(-45deg);
+	margin-top: -1px;
+}
+
+.menu-open .burger-menu::after {
+	top: 50%;
+	margin-top: -1px;
+	transform: rotate(45deg);
+}
+
+/* Menu header__list при кліці на бургері*/
+
+.menu-open .header__nav {
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding-top: 50px;
+	// transform: translate(-50%, -50%);
+}
+
+.menu-open .header__list {
+	flex-direction: column;
+	align-items: flex-start;
+
+}
+
+.phones {
+	position: absolute;
+	display: none;
+	//  opacity: 0;
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* row-gap: 5px; */
+	width: 159px;
+	left: 50%;
+	top: 100%;
+	padding-top: 5px;
+	pointer-events: none;
+	transform: translateX(-50%);
+	transition: all 0.3s;
+
+	&__list {
+		border-radius: 5px;
+		background-color: #FFF;
+		box-shadow: 0px 4px 14px 0px #0000000d;
+		padding: 10px 24px;
+	}
+
+	&__item {
+		a {
+			font-weight: 400;
+			color: #343434;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+
+		@media (any-hover: hover) {
+			&:hover a {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+// header:target .phones {
+// 	display: block;
+// }
+
+.logo {
+	flex-grow: 1;
+
+	&--margin {
+		margin-bottom: 24px;
+	}
+
+	@media (max-width: 768px) {
+		flex-grow: 0;
+	}
+
+	@media (max-width: 440px) {
+		justify-self: end;
+	}
+}
+
+.action {
+	flex-basis: 193px;
+	flex-grow: 0;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 21px;
+		row-gap: 15px;
+	}
+
+	@media (max-width: 768px) {
+		flex-basis: auto;
+	}
+
+	@media (max-width: 440px) {
+		grid-column: span 2;
+		justify-self: end;
+	}
+
+	&__link {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		&::before {
+			position: absolute;
+			content: "";
+			border-radius: 50%;
+			width: 35px;
+			height: 35px;
+			background-color: transparent;
+			transition: background-color 0.3s;
+			z-index: -1;
+		}
+
+		&:focus-visible {
+			outline-offset: 5px;
+			outline: 1px solid #343434;
+			border-radius: 50%;
+		}
+
+		@media (any-hover: hover) {
+			&:hover {
+				&::before {
+					background-color: #d2dada;
+				}
+			}
+		}
+	}
+}
+
+/* Секція Hero*/
+
+.hero-section {
+	padding-top: 98px;
+	padding-bottom: 166px;
+
+	&__container {
+		position: relative;
+		display: flex;
+		// flex-direction: column;
+		align-items: flex-start;
+
+		// @media (max-width: 1280px) {
+		// 	& {
+		// 		width: 100%;
+		// 		height: 100%;
+		// 		background-image: url("/img/hero_image/cat.svg");
+		// 		background-repeat: no-repeat;
+		// 		background-position: center;
+		// 		background-size: cover;
+		// 	}
+		// }
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		/* flex-basis: 767px; */
+		flex-grow: 0;
+		flex-shrink: 1;
+		/* height: calc(100vh - 223px); */
+		max-width: 767px;
+
+		& h1 {
+			font-family: Jost;
+			font-size: 64px;
+			font-weight: 700;
+			line-height: normal;
+			margin-bottom: 4px;
+		}
+
+		& p {
+			font-family: Jost;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: normal;
+			margin-bottom: 34px;
+		}
+	}
+
+	&__image {
+		position: absolute;
+		right: 76px;
+		top: 12px;
+		z-index: -1;
+
+		& img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			aspect-ratio: 440 / 339;
+		}
+
+		// @media (max-width: 1280px) {
+		// 	display: none;
+		// }
+	}
+}
+
+.btn-shop {
+	border-radius: 5px;
+	background-color: #1E4646;
+	padding: 13px 65px;
+	transition: background-color 0.5s;
+
+	& span {
+		font-family: Jost;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: normal;
+		text-transform: uppercase;
+		color: #FBFBFB;
+		transition: color 0.3s;
+
+		&:active {
+			color: #343434;
+		}
+
+		&:disabled {
+			border: 1px solid #AEAEAE;
+			background-color: #EDF1F1;
+		}
+	}
+
+	&:focus-visible {
+		outline-offset: 2px;
+		outline: 1px solid #343434;
+		border-radius: 5px;
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #789090;
+		}
+	}
+
+	&:active {
+		background-color: #FBFBFB;
+		box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.10);
+	}
+}
+
+/* Секція Choose*/
+
+.choose {
+	padding-bottom: 17px;
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 24px;
+		row-gap: 15px;
+	}
+
+	&__item {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		// flex-basis: 387px;
+		flex-grow: 0;
+		flex-shrink: 1;
+		padding-top: 140px;
+
+		&:nth-child(1) {
+			flex-basis: 417px;
+		}
+
+		&:nth-child(2) {
+			flex-basis: 387px;
+		}
+
+		&:nth-child(3) {
+			flex-basis: 380px;
+		}
+	}
+
+	&__image {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		max-width: 98px;
+		transform: translateX(-50%);
+
+		& img {
+			width: 100%;
+		}
+	}
+
+	&__text {
+		text-align: center;
+
+		& h3 {
+			font-family: Jost;
+			font-size: 24px;
+			font-weight: 500;
+			line-height: normal;
+			color: #343434;
+			margin-bottom: 10px;
+		}
+
+		& p {
+			font-family: "Open Sans";
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 1.375;
+			/* 22/16 */
+			color: #343434;
+		}
+	}
+}
+
+.section-title {
+	margin-bottom: 16px;
+
+	& h2 {
+		font-family: Jost;
+		font-size: 48px;
+		font-weight: 600;
+		line-height: normal;
+		color: #343434;
+		text-align: center;
+		text-transform: capitalize;
+	}
+
+	&--left h2 {
+		text-align: left;
+	}
+
+	&--our-products-margin {
+		margin-bottom: 20px;
+	}
+
+	&--margin {
+		margin-bottom: 32px;
+	}
+
+	&--text-transform h2 {
+		text-transform: none;
+	}
+
+	&--align-right {
+		margin-bottom: 0;
+
+		& h2 {
+			text-align: right;
+			margin-bottom: 0;
+
+		}
+	}
+}
+
+/* Секція Novelties */
+/* Секція Novelties */
+/* Секція Novelties */
+
+.product-block {
+	padding: 0 53px;
+
+	&--padding-novelties {
+		padding: 0 70px;
+	}
+	}
+
+.product-card {
+	display: flex;
+	// justify-content: center;
+	flex-wrap: wrap;
+	column-gap: 64px;
+	row-gap: 32px;
+
+	&--column-gap {
+		column-gap: 47px;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-basis: 335px;
+		flex-grow: 0;
+		flex-shrink: 1;
+		border-radius: 5px;
+		border: 1px solid #efefef;
+		padding: 27px 36px;
+	}
+
+	&__image {
+		flex-basis: 239px;
+		/* flex-grow: 1; */
+		flex-shrink: 0;
+		max-width: 140px;
+		margin-bottom: 24px;
+
+		&--size {
+			flex-basis: 215px;
+			flex-grow: 1;
+			flex-shrink: 0;
+			max-width: 130px;
+		}
+
+		& img {
+			/* width: 100%; */
+		}
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		/* flex-basis: 129px; */
+		flex-grow: 1;
+		text-align: center;
+		max-width: 183px;
+		margin-bottom: 8px;
+	}
+}
+
+.text-product-card {
+	font-family: Jost;
+	font-weight: 500;
+
+	& span {
+		display: inline-block;
+		font-family: Jost;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: normal;
+		flex-grow: 1;
+		margin-bottom: 3px;
+		/*Не працює з рядковим елементом, додам йому inline-block? але із-за того, що батьківський елемент flex все працює*/
+	}
+
+	& h4 {
+		/* flex-basis: 70px; */
+		font-size: 24px;
+		line-height: normal;
+		color: #1e4646;
+	}
+
+	&~span {
+		font-family: "Open Sans";
+		font-size: 20px;
+		font-weight: 400;
+		line-height: normal;
+		margin-bottom: 16px;
+	}
+}
+
+.btn-basket {
+	border-radius: 5px;
+	/* box-shadow: 0 0 0 1px #1e4646; */
+	background-color: #1e4646;
+	padding: 13px 25px;
+	transition: background-color 0.5s, box-shadow 0.3s;
+
+	& span {
+		font-family: Jost;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: normal;
+		color: #fbfbfb;
+		text-transform: uppercase;
+	}
+
+	&:focus-visible {
+		outline-offset: 2px;
+		outline: 1px solid #343434;
+		border-radius: 5px;
+	}
+
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: #789090;
+			/* box-shadow: none; */
+		}
+	}
+
+	&:active {
+		background-color: #fbfbfb;
+		box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+
+		& span {
+			color: #343434;
+			box-shadow: 0px 4px 10px 0px #0000001a;
+		}
+	}
+
+	&:disabled {
+		border: 1px solid #aeaeae;
+		background-color: #edf1f1;
+
+		& span {
+			color: #aeaeae;
+		}
+	}
+}
+
+/* Секція mission */
+
+.mission {
+	&>* {
+		margin-bottom: 16px;
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: 50px;
+	}
+
+	&__block-text {
+		flex-basis: 481px;
+		flex-grow: 0;
+		flex-shrink: 1;
+	}
+
+	&__text {
+		margin-bottom: 31px;
+
+		& p {
+			font-size: 20px;
+			line-height: normal;
+		}
+	}
+
+	&__image {
+		max-width: 500px;
+
+		& img {
+			width: 100%;
+		}
+	}
+
+	&>*:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/* Секція footer */
+/* Секція footer */
+/* Секція footer */
+
+.footer {
+	border-top: 1px solid #d6d6d6;
+	padding: 32px 0;
+
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		column-gap: 20px;
+	}
+
+	&__menu {
+		display: flex;
+		/* justify-content: space-between; */
+		flex-basis: 598px;
+		flex-grow: 0;
+		flex-shrink: 1;
+		column-gap: 114px;
+	}
+}
+
+.menu-footer {
+
+	&__shop h4,
+	&__contacts h4,
+	&__about-us h4 {
+		font-family: Jost;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: normal;
+		color: #343434;
+	}
+
+	&__contacts {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+		row-gap: 6px;
+
+		& a {
+			line-height: normal;
+		}
+	}
+
+	&__about-us {
+		display: flex;
+		flex-direction: column;
+		row-gap: 5px;
+
+		& span {
+			line-height: normal;
+		}
+	}
+}
+
+.footer-action {
+	display: flex;
+	align-self: flex-end;
+	column-gap: 37px;
+
+	&__instagram {
+		align-self: center;
+		max-width: 42px;
+
+		& img {
+			width: 100%;
+		}
+	}
+
+	&__facebook {
+		max-width: 48px;
+
+		& img {
+			width: 100%;
+		}
+	}
+}
+
+/* Сторінка About Us */
+/* Сторінка About Us */
+/* Сторінка About Us */
+
+/* Секція Hero-section */
+
+.hero-screen {
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		/* flex-wrap: wrap; */
+		column-gap: 20px;
+		row-gap: 15px;
+	}
+
+	&__image {
+		flex: 0 1 500px;
+	}
+}
+
+.text-block {
+	&>* {
+		margin-bottom: 16px;
+	}
+
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	flex: 0 1 650px;
+	padding-top: 4px;
+
+	&__paragraf {
+		margin-bottom: 39px;
+
+		& p {
+			font-family: Jost;
+			font-size: 20px;
+			font-weight: 300;
+			line-height: normal;
+			text-align: right;
+		}
+	}
+
+	&>*:last-child {
+		margin-bottom: 0;
+	}
+}
+
+/* Секція статей Quality Ingredients, Recipe Formulation, The Difference in Every Bowl */
+
+.about-product__list>* {
+	margin-bottom: 64px;
+}
+
+.about-product__list {
+	padding: 0 43px;
+}
+
+/* Блок Quality Ingredients */
+
+.ingredients,
+.recipe,
+.difference {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	/* flex-wrap: wrap; */
+	column-gap: 20px;
+	row-gap: 15px;
+	max-width: 1154px;
+	padding: 0;
+}
+
+.recipe {
+	justify-content: space-between;
+	flex-basis: 1069px;
+	flex-grow: 0;
+	flex-shrink: 1;
+	// column-gap: 185px;
+}
+
+.text-block-ingredients>*,
+.text-block-recipe>*,
+.text-block-difference>* {
+	margin-bottom: 8px;
+}
+
+.text-block-ingredients,
+.text-block-recipe,
+.text-block-difference {
+	flex-grow: 0;
+	flex-shrink: 1;
+	flex-basis: 552px;
+	padding-top: 12px;
+}
+
+.text-block-recipe {
+	text-align: end;
+}
+
+.text-block-ingredients__title,
+.text-block-recipe__title,
+.text-block-difference__title {
+	font-family: Jost;
+	font-size: 36px;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.text-block-ingredients__paragraf,
+.text-block-recipe__paragraf,
+.text-block-difference__paragraf {
+	margin-bottom: 45px;
+}
+
+.text-block-ingredients__paragraf p,
+.text-block-recipe__paragraf p,
+.text-block-difference__paragraf p {
+	line-height: 1.375;
+	/* 22/16 */
+}
+
+.text-block-ingredients>*:last-child,
+.text-block-recipe>*:last-child,
+.text-block-difference>*:last-child {
+	margin-bottom: 0;
+}
+
+.ingredients__image {
+	flex: 0 1 320px;
+}
+
+/* Блок Recipe Formulation */
+
+.recipe__image,
+.difference__image {
+	flex: 0 1 332px;
+}
+
+/* Блок The Difference in Every Bowl */
+
+.about-product__list>*:last-child {
+	margin-bottom: 0;
+}
+
+/* Секція Novelties */
+
+.novelties--title {
+	margin-bottom: 32px;
+}
+
+/* Сторінка Shop*/
+/* Сторінка Shop */
+/* Сторінка Shop */
+
+.novelties--margin {
+	margin-bottom: 64px;
+}
+
+/* Секція Filter and search */
+/* Секція Filter and search */
+
+.filter-search {
+	margin-bottom: 4px;
+
+	&__container {
+		display: flex;
+		column-gap: 29px;
+	}
+
+	&__block {
+		display: flex;
+		align-items: center;
+		column-gap: 10px;
+
+		&::before {
+			content: '';
+			width: 24px;
+			height: 24px;
+			background-image: url("../img/catalog/filter.svg");
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		& span {
+			font-family: Jost;
+			font-size: 20px;
+			font-weight: 400;
+			line-height: normal;
+			color: #5D5D5D;
+		}
+	}
+}
+
+.filter-search__block span,
+.form-filter-search__input::placeholder {
+	font-family: Jost;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: normal;
+	color: #5D5D5D;
+	/* text-align: center; */
+}
+
+.form-filter-search {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 48px;
+	height: 48px;
+	overflow: hidden;
+	transition: width 0.3s;
+
+	&__input::-webkit-search-decoration,
+	&__input::-webkit-search-cancel-button {
+		display: none;
+	}
+
+	&__input {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		width: calc(200px - 48px);
+		height: 48px;
+		left: 0;
+		/* top: 0; */
+		bottom: 0;
+		border: none;
+		padding: 0 0 0 15px;
+		opacity: 0;
+		cursor: pointer;
+		/* pointer-events: none; */
+		/* z-index: 2; */
+	}
+
+	&__button {
+		/* position: absolute; */
+		/* content: ''; */
+		width: 48px;
+		height: 48px;
+		right: 0;
+		top: 0;
+		background-image: url("../img/catalog/search.svg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		pointer-events: all;
+		margin-left: auto;
+		transition: ease-in-out;
+	}
+
+	&:focus-within {
+		width: 200px;
+		border: 1px solid #343434;
+		border-radius: 50px;
+	}
+
+	&:focus-within .form-filter-search__input {
+		opacity: 1;
+		/* pointer-events: all; */
+		outline: none;
+		cursor: initial;
+		/* top: 0; */
+	}
+}
+
+/* .form-filter-search__input {
+	height: 48px;
+	padding: 15px;
+} */
+
+/* Секція products-cards */
+/* Секція products-cards*/
+/* Секція products-cards */
+
+.products-cards {
+	border-top: 1px solid #D6D6D6;
+
+	&__container {
+		padding-top: 24px;
+	}
+}
+
+/* Пагінація тимчасова*/
+
+.pagination {
+	&__container {
+		display: flex;
+		justify-content: center;
+		column-gap: 16px;
+	}
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-family: Jost;
+		font-size: 24px;
+		font-weight: 500;
+		line-height: normal;
+		color: #AEAEAE;
+		width: 48px;
+		height: 48px;
+		border: 1px solid #AEAEAE;
+		border-radius: 5px;
+		padding: 6px 17px 7px 16px;
+
+		&--active {
+			color: #343434;
+		}
+	}
+}
+
+/* Сторінка shop-2*/
+
